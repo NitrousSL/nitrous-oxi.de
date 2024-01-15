@@ -2,7 +2,7 @@
 
 import React, {SetStateAction, useEffect, useState} from 'react';
 import {Navbar} from "./components/Navbar";
-import Footer from "./components/Footer";
+import Footer from "./components/footer/Footer";
 
 const BubbleText = () => {
     useEffect(() => {
@@ -124,7 +124,7 @@ export default function Home() {
                 </div>
                 <div className="flex flex-wrap gap-2 justify-center">
                     {buttons.map((button, index) => (
-                        <button key={index} onClick={() => handleButtonChange(button)} className={`p-2 rounded w-32 text-white cursor-pointer bg-[#5D3FD3] ${selectedButton === button ? 'bg-[#331E84]' : ''}`}>{button}</button>
+                        <button key={index} onClick={() => handleButtonChange(button)} className={`p-2 rounded w-32 text-white cursor-pointer bg-[#5D3FD3] ${selectedButton === button ? 'bg-indigo-500' : ''}`}>{button}</button>
                     ))}
                 </div>
             </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Navbar() {
+export default function Footer() {
     return (
         <footer>
             <div className="flex flex-col items-center justify-center py-8">
