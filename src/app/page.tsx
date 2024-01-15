@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useEffect, SetStateAction } from 'react';
-import { Navbar } from "./components/Navbar";
+import React, {SetStateAction, useEffect, useState} from 'react';
+import {Navbar} from "./components/Navbar";
 import Footer from "./components/Footer";
 
 const BubbleText = () => {
@@ -82,6 +82,11 @@ const getButtonCategories = async () => {
     })
 
     return categories
+}
+
+const queryAPI = async (query: string, category: string) => {
+    const res = await fetch(`https://api.nitrous-oxi.de/${category}/${query}`)
+    return await res.json()
 }
 
 // Home Component
