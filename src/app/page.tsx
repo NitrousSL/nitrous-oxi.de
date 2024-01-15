@@ -71,22 +71,40 @@ const Text = ({ children }: { children: string }) => {
 };
 
 const getButtonCategories = async () => {
-    let categories: string[] = []
+    let categories: string[] = [];
 
-    const res = await fetch('https://api.nitrous-oxi.de/')
+    const res = await fetch('https://api.nitrous-oxi.de/');
 
     // returns an array of objects, each one has a 'category' property which we use to form our list
-    const data = await res.json()
+    const data = await res.json();
     data.forEach((obj: { category: string }) => {
         categories.push(obj.category)
-    })
+    });
 
-    return categories
+    return categories;
+}
+
+const getFlavorTexts = async () => {
+    let flavors: string[] = [];
+
+    const res = await fetch('https://raw.githubusercontent.com/NitrousOSINT/assets/main/txt/flavors.txt');
+    const data = await res.text();
+
+    // split by new line
+    const lines = data.split('\n');
+    lines.forEach((line: string) => {
+        flavors.push(line);
+    });
+
+    // shuffle the array
+    flavors.sort(() => Math.random() - 0.5);
+
+    return flavors;
 }
 
 const queryAPI = async (query: string, category: string) => {
-    const res = await fetch(`https://api.nitrous-oxi.de/${category}/${query}`)
-    return await res.json()
+    const res = await fetch(`https://api.nitrous-oxi.de/${category}/${query}`);
+    return await res.json();
 }
 
 // Home Component
