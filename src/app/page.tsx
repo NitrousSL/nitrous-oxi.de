@@ -1,6 +1,5 @@
 'use client';
 
-
 import React, { useState, useEffect, SetStateAction } from 'react';
 import { Navbar } from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -71,18 +70,27 @@ const Text = ({ children }: { children: string }) => {
     );
 };
 
+const getButtonCategories = async () => {
+    let categories: string[] = []
+
+    const res = await fetch('https://api.nitrous-oxi.de/')
+
+    // returns an array of objects, each one has a 'category' property which we use to form our list
+    const data = await res.json()
+    data.forEach((obj: { category: string }) => {
+        categories.push(obj.category)
+    })
+
+    return categories
+}
+
 // Home Component
 export default function Home() {
     const [selectedButton, setSelectedButton] = useState('Email');
     const [errorMessage, setErrorMessage] = useState(null);
     const [loading, setLoading] = useState(false);
 
-    const buttons = [
-        'email',
-        'username',
-        'phone',
-        'ip address',
-    ];
+    const buttons: string[] = ["email", "username", "phone", "ip", "domain"];
 
     const handleButtonChange = (name: SetStateAction<string>) => {
       if (!loading)
