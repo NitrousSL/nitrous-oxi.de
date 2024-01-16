@@ -4,7 +4,7 @@ import React, {SetStateAction, useEffect, useState} from 'react';
 import {Navbar} from "./components/Navbar";
 import Footer from "./components/footer/Footer";
 
-const FLAVOR_KEY_WORDS = ['data', 'free', 'osint', 'web'];
+const FLAVOR_KEY_WORDS = ['effortlessly', 'beyond', 'data', 'free', 'osint', 'web', 'find', 'zero', 'no'];
 
 const BubbleText = () => {
     useEffect(() => {
@@ -83,6 +83,7 @@ const getButtonCategories = async () => {
         categories.push(obj.category)
     });
 
+
     return categories;
 }
 
@@ -115,14 +116,20 @@ export default function Home() {
     const [errorMessage, setErrorMessage] = useState(null);
     const [loading, setLoading] = useState(false);
 
-    const buttons: string[] = ["email", "username", "phone", "ip", "domain"];
+    const [flavorTexts, setFlavorTexts] = useState<string[]>(['']);
+    const [buttonCategories, setButtonCategories] = useState<string[]>([]);
+
+    // TODO: look into SWR for data fetching
+    useEffect(() => {
+        getFlavorTexts().then((res) => setFlavorTexts(res));
+        getButtonCategories().then((res) => setButtonCategories(res));
+    }, []);
 
     const handleButtonChange = (name: SetStateAction<string>) => {
       if (!loading)
         setSelectedButton(name);
     }
-
-
+    
     return (
         <div>
             <Navbar />
@@ -133,7 +140,14 @@ export default function Home() {
                 <BubbleText />
 
                 <div className='text-center text-xl text-gray-100 font-normal'>
-                    open source osint tool
+                    {/** TODO: slot machine spiny animation to cycle through flavorTexts array */}
+                    {flavorTexts[0].split(' ').map((word, index) => {
+                        if (FLAVOR_KEY_WORDS.includes(word.toLowerCase())) {
+                            return <span key={index} className="font-bold text-[#0b50a3]">{word} </span>
+                        } else {
+                            return <span key={index}>{word} </span>
+                        }})
+                    }
                 </div>
 
                 {/* error message and search input */}
@@ -143,7 +157,7 @@ export default function Home() {
                     <button className="cursor-pointer bg-transparent text-white h-full w-24">search</button>
                 </div>
                 <div className="flex flex-wrap gap-2 justify-center">
-                    {buttons.map((button, index) => (
+                    {buttonCategories.map((button, index) => (
                         <button key={index} onClick={() => handleButtonChange(button)} className={`p-2 rounded w-32 text-white cursor-pointer bg-[#5D3FD3] ${selectedButton === button ? 'bg-indigo-500' : ''}`}>{button}</button>
                     ))}
                 </div>
