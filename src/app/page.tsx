@@ -129,7 +129,7 @@ export default function Home() {
       if (!loading)
         setSelectedButton(name);
     }
-    
+
     return (
         <div>
             <Navbar />
