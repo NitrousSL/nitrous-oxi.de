@@ -1,10 +1,20 @@
 'use client';
 
 import React, {SetStateAction, useEffect, useState} from 'react';
-import {Navbar} from "./components/Navbar";
-import Footer from "./components/footer/Footer";
+import { Navbar }                                   from "./components/Navbar";
+import Footer                                       from "./components/footer/Footer";
 
-const FLAVOR_KEY_WORDS = ['effortlessly', 'beyond', 'data', 'free', 'osint', 'web', 'find', 'zero', 'no'];
+const FLAVOR_KEY_WORDS = [
+    'effortlessly',
+    'beyond',
+    'osint',
+    'data',
+    'free',
+    'find',
+    'zero',
+    'web',
+    'no'
+];
 
 const BubbleText = () => {
     useEffect(() => {
@@ -106,7 +116,7 @@ const getFlavorTexts = async () => {
 }
 
 const queryAPI = async (query: string, category: string) => {
-    const res = await fetch(`https://api.nitrous-oxi.de/${category}/${query}`);
+    const res = await fetch(`https://api.nitrous-oxi.de/${category}?query=${query}`);
     return await res.json();
 }
 
@@ -118,6 +128,25 @@ export default function Home() {
 
     const [flavorTexts, setFlavorTexts] = useState<string[]>(['']);
     const [buttonCategories, setButtonCategories] = useState<string[]>([]);
+
+    const [query, setQuery] = useState('');
+
+    const [results, setResults] = useState<any[]>([]);
+
+    const handleSearch = async () => {
+        setLoading(true);
+        setErrorMessage(null);
+
+        const res = await queryAPI(query, selectedButton);
+        if (res.error) {
+            setErrorMessage(res.error);
+        } else {
+            setResults(res);
+        }
+        setLoading(false);
+
+        console.log(res)
+    }
 
     // TODO: look into SWR for data fetching
     useEffect(() => {
@@ -143,7 +172,7 @@ export default function Home() {
                     {/** TODO: slot machine spiny animation to cycle through flavorTexts array */}
                     {flavorTexts[0].split(' ').map((word, index) => {
                         if (FLAVOR_KEY_WORDS.includes(word.toLowerCase())) {
-                            return <span key={index} className="font-bold text-[#0b50a3]">{word} </span>
+                            return <span key={index} className="font-bold bg-grad">{word} </span>
                         } else {
                             return <span key={index}>{word} </span>
                         }})
@@ -153,14 +182,24 @@ export default function Home() {
                 {/* error message and search input */}
                 <p className="flex justify-center text-white">{errorMessage}</p>
                 <div className="relative flex items-center">
-                    <input className="w-full bg-[#331E84] px-4 py-3 text-left text-lg font-normal leading-none placeholder-gray-200 outline-none rounded-none" type="text" placeholder="enter an email, username, phone, ip & more..."></input>
-                    <button className="cursor-pointer bg-transparent text-white h-full w-24">search</button>
+                    <input onChange={(event) => setQuery(event.target.value)} className="w-full bg-[#331E84] px-4 py-3 text-left text-lg font-normal leading-none placeholder-gray-200 outline-none rounded-none" type="text" placeholder="enter an email, username, phone, ip & more..."></input>
+                    <button className="cursor-pointer bg-transparent text-white h-full w-24" onClick={handleSearch}>search</button>
                 </div>
                 <div className="flex flex-wrap gap-2 justify-center">
                     {buttonCategories.map((button, index) => (
                         <button key={index} onClick={() => handleButtonChange(button)} className={`p-2 rounded w-32 text-white cursor-pointer bg-[#5D3FD3] ${selectedButton === button ? 'bg-indigo-500' : ''}`}>{button}</button>
                     ))}
                 </div>
+
+                {/* results */}
+                <div className="flex flex-col gap-2">
+                    {results.map((result, index) => (
+                        <div key={index} className="flex flex-col gap-2">
+                            <p className="text-white">{result.data}</p>
+                        </div>
+                    ))}
+                </div>
+
             </div>
             <Footer />
         </div>

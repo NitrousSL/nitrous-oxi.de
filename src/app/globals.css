@@ -26,3 +26,11 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.bg-grad {
+  background: linear-gradient(-45deg, #261462, #7a5fef, #4622a2, #261462);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-animation: animated_text 10s ease-in-out infinite;
+  -webkit-animation: animated_text 10s ease-in-out infinite;
+}
