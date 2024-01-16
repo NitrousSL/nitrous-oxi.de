@@ -4,6 +4,8 @@ import React, {SetStateAction, useEffect, useState} from 'react';
 import {Navbar} from "./components/Navbar";
 import Footer from "./components/footer/Footer";
 
+const FLAVOR_KEY_WORDS = ['data', 'free', 'osint', 'web'];
+
 const BubbleText = () => {
     useEffect(() => {
         const spans = document.querySelectorAll(".hover-text span") as NodeListOf<HTMLSpanElement>;
