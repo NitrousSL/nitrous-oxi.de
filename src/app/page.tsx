@@ -122,30 +122,26 @@ const queryAPI = async (query: string, category: string) => {
 
 // Home Component
 export default function Home() {
-    const [selectedButton, setSelectedButton] = useState('Email');
-    const [errorMessage, setErrorMessage] = useState(null);
-    const [loading, setLoading] = useState(false);
 
-    const [flavorTexts, setFlavorTexts] = useState<string[]>(['']);
+    const [flavorTexts, setFlavorTexts]           = useState<string[]>(['']);
+
+    const [errorMessage, setErrorMessage]         = useState(null);
+    const [loading, setLoading]                   = useState(false);
+
     const [buttonCategories, setButtonCategories] = useState<string[]>([]);
+    const [selectedButton, setSelectedButton]     = useState('Email');
 
-    const [query, setQuery] = useState('');
-
-    const [results, setResults] = useState<any[]>([]);
+    const [results, setResults]                   = useState<any[]>([]);
+    const [query, setQuery]                       = useState('');
 
     const handleSearch = async () => {
-        setLoading(true);
-        setErrorMessage(null);
+        setLoading(true); setErrorMessage(null);
 
         const res = await queryAPI(query, selectedButton);
-        if (res.error) {
-            setErrorMessage(res.error);
-        } else {
-            setResults(res);
-        }
-        setLoading(false);
 
-        console.log(res)
+        if (res.error) { setErrorMessage(res.error); } else { setResults(res); }
+
+        setLoading(false);
     }
 
     // TODO: look into SWR for data fetching
