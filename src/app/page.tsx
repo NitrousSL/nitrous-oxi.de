@@ -12,6 +12,7 @@ const FLAVOR_KEY_WORDS = [
     'free',
     'find',
     'zero',
+    'full',
     'web',
     'no'
 ];
@@ -82,6 +83,11 @@ const Text = ({ children }: { children: string }) => {
     );
 };
 
+/*
+    @type function
+    @returns : array of strings
+    @desc    : gets the categories from the apis main indexing endpoint
+ */
 const getButtonCategories = async () => {
     let categories: string[] = [];
 
@@ -92,11 +98,15 @@ const getButtonCategories = async () => {
     data.forEach((obj: { category: string }) => {
         categories.push(obj.category)
     });
-
-
+    
     return categories;
 }
 
+/*
+    @type function
+    @returns : array of strings
+    @desc    : gets flavor texts out of the assets repo
+ */
 const getFlavorTexts = async () => {
     let flavors: string[] = [];
 
@@ -115,6 +125,13 @@ const getFlavorTexts = async () => {
     return flavors;
 }
 
+/*
+    @type function
+    @param query    : string
+    @param category : string
+    @returns        : array of objects [{name: string, data: object}]
+    @desc           : queries the api and returns the data
+ */
 const queryAPI = async (query: string, category: string) => {
     const res = await fetch(`https://api.nitrous-oxi.de/${category}?query=${query}`);
     return await res.json();
@@ -135,11 +152,23 @@ export default function Home() {
     const [query, setQuery]                       = useState('');
 
     const handleSearch = async () => {
+        let data: any[] = [];
+
         setLoading(true); setErrorMessage(null);
 
         const res = await queryAPI(query, selectedButton);
 
-        if (res.error) { setErrorMessage(res.error); } else { setResults(res); }
+        if (res.error) { setErrorMessage(res.error); } else {
+
+            // map the objects returned by the api
+            res.forEach((obj: { name: string; data: any; }) => {
+
+                // if the module returned a 200 status code, add it to the data array
+                if (obj.data.status === 200) { data.push({name: obj.name, data: obj.data}) }
+            });
+
+            setResults(data);
+        }
 
         setLoading(false);
     }
@@ -187,14 +216,35 @@ export default function Home() {
                     ))}
                 </div>
 
-                {/* results */}
+                {/* results (gets back an object with keys) ex: [{name: 'module', data: { status: 200, data: {x: y, z:, a}}}, {name: 'module2', data: {...}}] */}
                 <div className="flex flex-col gap-2">
+
+                    {/* map the initial array of results (each module) */}
                     {results.map((result, index) => (
                         <div key={index} className="flex flex-col gap-2">
-                            <p className="text-white">{result.data}</p>
+
+                            {/* module name */}
+                            <h3 className="text-white text-xl">{result.name}</h3>
+                            <div className="flex flex-col gap-1">
+
+                                {/* map the data object of each modules result */}
+                                {Object.entries(result.data).map((entry, index) => (
+                                    <div key={index} className="flex flex-col gap-1">
+
+                                        {/* this is "status" and "data" texts */}
+                                        <h4 className="text-white text-lg">{entry[0]}</h4>
+
+
+                                    </div>
+                                ))}
+
+                            </div>
+
                         </div>
                     ))}
+
                 </div>
+
 
             </div>
             <Footer />
