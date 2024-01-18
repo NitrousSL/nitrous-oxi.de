@@ -15,7 +15,6 @@ const SimpleFloatingNav = () => {
       <Logo />
 
       <NavLink redirect={'/'}       > Home    </NavLink>
-      <NavLink redirect={'/about'}  > About   </NavLink>
       <NavLink redirect={'/terms'}  > Terms   </NavLink>
       <NavLink redirect={'/privacy'}> Privacy </NavLink>
 
