@@ -2,7 +2,6 @@
 
 import { Navbar } from "@/app/components/Navbar";
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { FiArrowRight } from "react-icons/fi";
 import { AnimatePresence, motion } from "framer-motion";
 
 const Privacy = () => {
@@ -79,7 +78,7 @@ const Solution = ({
             animate={{
               color: isOpen ? "text-white" : "text-white",
             }}
-            className="text-xl font-medium w-fit"
+            className="text-xl font-medium w-fit text-gray-200"
           >
             {title}
           </motion.p>
@@ -111,17 +110,17 @@ export default Privacy;
 const solutions = [
   {
     id: 1,
-    title: "no logs",
+    title: "data-free at its core",
     description:
-      "we store nothing, all data is sourced externally, all our code is completely public. no cookies, no sessions or analytics.",
+      "we store nothing, all data is sourced externally, and all our code is completely open source.",
     imgSrc:
       "https://media1.giphy.com/media/tKwBcoHhMCDRdGwga0/giphy.gif?cid=ecf05e471ygvxyik6mlu8c07mkeqmtlkznpk9d2lzycv5d7c&ep=v1_gifs_search&rid=giphy.gif&ct=g",
   },
   {
     id: 3,
-    title: "private",
+    title: "use privately with confidence",
     description:
-      "use privately with confidence.",
+      "zero logging, zero data retention, zero user data. no cookies. no tracking. no telemetry. true privacy for our users is our number one priority.",
     imgSrc:
       "https://media1.giphy.com/media/FuymHMw4bkvgxLqGqw/giphy.gif?cid=ecf05e47lqrxurr1g6whyf0wg6bm7pvytl33f5y85i2b6447&ep=v1_gifs_search&rid=giphy.gif&ct=g",
   },
