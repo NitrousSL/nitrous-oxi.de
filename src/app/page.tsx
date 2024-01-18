@@ -98,7 +98,7 @@ const getButtonCategories = async () => {
     data.forEach((obj: { category: string }) => {
         categories.push(obj.category)
     });
-    
+
     return categories;
 }
 
@@ -154,12 +154,15 @@ export default function Home() {
     const handleSearch = async () => {
         let data: any[] = [];
 
-        setLoading(true); setErrorMessage(null);
+        setLoading(true); setErrorMessage(null); setResults([]);
 
         const res = await queryAPI(query, selectedButton);
 
-        if (res.error) { setErrorMessage(res.error); } else {
+        if (res.error) { setErrorMessage(res.error); }
 
+        else if (res.status === 400) { setErrorMessage(res.data); }
+
+        else {
             // map the objects returned by the api
             res.forEach((obj: { name: string; data: any; }) => {
 
@@ -169,7 +172,7 @@ export default function Home() {
 
             setResults(data);
         }
-
+        
         setLoading(false);
     }
 
