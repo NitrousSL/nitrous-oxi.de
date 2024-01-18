@@ -210,7 +210,7 @@ export default function Home() {
                 {/* error message and search input */}
                 <p className="flex justify-center text-white">{errorMessage}</p>
                 <div className="relative flex items-center">
-                    <input onChange={(event) => setQuery(event.target.value)} className="w-full bg-[#331E84] px-4 py-3 text-left text-lg font-normal leading-none placeholder-gray-200 outline-none rounded-none" type="text" placeholder="enter an email, username, phone, ip & more..."></input>
+                    <input onChange={(event) => setQuery(event.target.value)} className="w-full bg-[#331E84] px-4 py-3 text-left text-lg font-normal leading-none text-gray-200 placeholder-gray-200 outline-none rounded-none" type="text" placeholder="enter an email, username, phone, ip & more..."></input>
                     <button className="cursor-pointer bg-transparent text-white h-full w-24" onClick={handleSearch}>search</button>
                 </div>
                 <div className="flex flex-wrap gap-2 justify-center">
