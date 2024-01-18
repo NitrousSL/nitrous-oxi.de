@@ -8,7 +8,7 @@ const Privacy = () => {
   const [open, setOpen] = useState(solutions[0].id);
   const imgSrc = solutions.find((s) => s.id === open)?.imgSrc;
   return (
-    <section className="px-8 py-48">
+    <section className=" py-48">
     <Navbar />
             
     {/* background and layout */}

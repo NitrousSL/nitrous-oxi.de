@@ -70,5 +70,3 @@ const NavLink = ({ children, redirect }: { children: string, redirect: string })
     </a>
   );
 };
-
-
