@@ -172,7 +172,7 @@ export default function Home() {
 
             setResults(data);
         }
-        
+
         setLoading(false);
     }
 

@@ -14,10 +14,10 @@ const SimpleFloatingNav = () => {
     <nav className="fixed left-[50%] top-8 flex w-fit -translate-x-[50%] items-center gap-6 rounded-lg border-[1px] border-indigo-700 bg-indigo-900 p-3 text-sm text-neutral-50">
       <Logo />
 
-      <NavLink>Home</NavLink>
-      <NavLink>About</NavLink>
-      <NavLink>Terms</NavLink>
-      <NavLink>Privacy</NavLink>
+      <NavLink redirect={'/'}       > Home    </NavLink>
+      <NavLink redirect={'/about'}  > About   </NavLink>
+      <NavLink redirect={'/terms'}  > Terms   </NavLink>
+      <NavLink redirect={'/privacy'}> Privacy </NavLink>
 
     </nav>
   );
@@ -42,9 +42,9 @@ const Logo = () => {
   );
 };
 
-const NavLink = ({ children }: { children: string }) => {
+const NavLink = ({ children, redirect }: { children: string, redirect: string }) => {
   return (
-    <a href="#" rel="nofollow" className="block overflow-hidden">
+    <a href={redirect} rel="nofollow" className="block overflow-hidden">
       <motion.div
         whileHover={{ y: -20 }}
         transition={{ ease: "backInOut", duration: 0.5 }}
