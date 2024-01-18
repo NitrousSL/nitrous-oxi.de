@@ -2,7 +2,6 @@
 
 import React, {SetStateAction, useEffect, useState} from 'react';
 import { Navbar }                                   from "./components/Navbar";
-import Footer                                       from "./components/footer/Footer";
 
 const FLAVOR_KEY_WORDS = [
     'effortlessly',
@@ -250,7 +249,6 @@ export default function Home() {
 
 
             </div>
-            <Footer />
         </div>
     )
 }

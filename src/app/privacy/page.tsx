@@ -1,8 +1,8 @@
 'use client';
 
 import { Navbar } from "@/app/components/Navbar";
-import Footer     from "@/app/components/footer/Footer";
 import React, { Dispatch, SetStateAction, useState } from "react";
+import { FiArrowRight } from "react-icons/fi";
 import { AnimatePresence, motion } from "framer-motion";
 
 const Privacy = () => {
@@ -42,7 +42,6 @@ const Privacy = () => {
           />
         </AnimatePresence>
       </div>
-      <Footer />
     </section>
   );
 };
