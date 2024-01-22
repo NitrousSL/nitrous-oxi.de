@@ -179,8 +179,6 @@ export default function Home() {
     useEffect(() => {
         getFlavorTexts().then((res) => setFlavorTexts(res));
         getButtonCategories().then((res) => setButtonCategories(res));
-
-        // TODO: set buttonCategories[0] as the default selected button (and highlight it)
     }, []);
 
     const handleButtonChange = (name: SetStateAction<string>) => {
@@ -189,75 +187,67 @@ export default function Home() {
     }
 
     return (
-        <div className="overflow-y-auto flex flex-col min-h-screen">
+        <div>
             <Navbar />
             {/* background and layout */}
             <div className="absolute top-0 z-[-2] h-screen w-screen bg-[#000000] bg-[radial-gradient(#ffffff33_1px,black_1px)] bg-[size:20px_20px]"></div>
-            <div className="mx-auto w-screen h-screen px-6 pb-10 md:max-w-[720px] lg:max-w-[612px] flex flex-col justify-center gap-4 flex-grow flex-col">
+            <div className="mx-auto w-screen h-screen px-6 pb-10 md:max-w-[720px] lg:max-w-[612px] flex flex-col justify-center gap-4">
+                
+                <BubbleText />
 
-                <div className="flex flex-col">
-                    <div>
-                        <BubbleText />
-                    </div>
-
-                    <div className="mt-2.5">
-                        <div className='text-center text-xl text-gray-100 font-normal'>
-                            {/** TODO: slot machine spiny animation to cycle through flavorTexts array */}
-                            {flavorTexts[0].split(' ').map((word, index) => {
-                                if (FLAVOR_KEY_WORDS.includes(word.toLowerCase())) {
-                                    return <span key={index} className="font-bold bg-grad">{word} </span>
-                                } else {
-                                    return <span key={index}>{word} </span>
-                                }})
-                            }
-                        </div>
-                    </div>
-
-                    <div className="mt-2.5">
-                        {/* error message and search input */}
-                        <p className="flex justify-center text-white">{errorMessage}</p>
-                        <div className="relative flex items-center mt-2.5">
-                            <input onChange={(event) => setQuery(event.target.value)} className="w-full bg-[#331E84] px-4 py-3 text-left text-lg font-normal leading-none text-gray-200 placeholder-gray-200 outline-none rounded-none" type="text" placeholder="enter an email, username, phone, ip & more..."></input>
-                            <button className="cursor-pointer bg-transparent text-white h-full w-24" onClick={handleSearch}>search</button>
-                        </div>
-
-                        {/* categories / buttons */}
-                        <div className="flex flex-wrap gap-2 justify-center mt-2.5">
-                            {buttonCategories.map((button, index) => (
-                                <button key={index} onClick={() => handleButtonChange(button)} className={`p-2 rounded w-32 text-white cursor-pointer bg-[#5D3FD3] ${selectedButton === button ? 'bg-indigo-500' : ''}`}>{button}</button>
-                            ))}
-                        </div>
-                    </div>
+                <div className='text-center text-xl text-gray-100 font-normal'>
+                    {/** TODO: slot machine spiny animation to cycle through flavorTexts array */}
+                    {flavorTexts[0].split(' ').map((word, index) => {
+                        if (FLAVOR_KEY_WORDS.includes(word.toLowerCase())) {
+                            return <span key={index} className="font-bold bg-grad">{word} </span>
+                        } else {
+                            return <span key={index}>{word} </span>
+                        }})
+                    }
                 </div>
 
+                {/* error message and search input */}
+                <p className="flex justify-center text-white">{errorMessage}</p>
+                <div className="relative flex items-center">
+                    <input onChange={(event) => setQuery(event.target.value)} className="w-full bg-[#331E84] px-4 py-3 text-left text-lg font-normal leading-none text-gray-200 placeholder-gray-200 outline-none rounded-none" type="text" placeholder="enter an email, username, phone, ip & more..."></input>
+                    <button className="cursor-pointer bg-transparent text-white h-full w-24" onClick={handleSearch}>search</button>
+                </div>
+                <div className="flex flex-wrap gap-2 justify-center">
+                    {buttonCategories.map((button, index) => (
+                        <button key={index} onClick={() => handleButtonChange(button)} className={`p-2 rounded w-32 text-white cursor-pointer bg-[#5D3FD3] ${selectedButton === button ? 'bg-indigo-500' : ''}`}>{button}</button>
+                    ))}
+                </div>
 
                 {/* results (gets back an object with keys) ex: [{name: 'module', data: { status: 200, data: {x: y, z:, a}}}, {name: 'module2', data: {...}}] */}
-                <div className="flex flex-col gap-2 mt-auto">
+                <div className="flex flex-col gap-2">
 
                     {/* map the initial array of results (each module) */}
                     {results.map((result, index) => (
                         <div key={index} className="flex flex-col gap-2">
 
-                            {/* map the name and data returned by the module (text-md, scrollable, with a distinct background) */}
-                            <div className="flex flex-col gap-2 bg-[#331E84] rounded p-2">
-                                <p className="text-white text-xl font-bold">{result.name}</p>
-                                <div className="flex flex-col gap-2 overflow-y-auto h-96">
-                                    {Object.keys(result.data.data).map((key, index) => (
-                                        <div key={index} className="flex flex-col gap-2">
-                                            <p className="text-gray-200 font-bold">{key}</p>
-                                            <p className="text-gray-400 font-normal">
-                                                {typeof result.data.data[key] === 'object' ?
-                                                    JSON.stringify(result.data.data[key], null, 2) :
-                                                    result.data.data[key]
-                                                }
-                                            </p>
-                                        </div>
-                                    ))}
-                                </div>
+                            {/* module name */}
+                            <h3 className="text-white text-xl">{result.name}</h3>
+                            <div className="flex flex-col gap-1">
+
+                                {/* map the data object of each modules result */}
+                                {Object.entries(result.data).map((entry, index) => (
+                                    <div key={index} className="flex flex-col gap-1">
+
+                                        {/* this is "status" and "data" texts */}
+                                        <h4 className="text-white text-lg">{entry[0]}</h4>
+
+
+                                    </div>
+                                ))}
+
                             </div>
+
                         </div>
                     ))}
+
                 </div>
+
+
             </div>
         </div>
     )
