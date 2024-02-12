@@ -3,9 +3,9 @@ nextjs/tailwindcss/typescript security suite frontend (still very early in devel
 
 ## Universal Components
 
-### Todo List:
+### Footer
 
-- Dynamic Footer
+### Navbar
 
 ## Landing Page [(/)](https://nitrous-oxi.de)
 

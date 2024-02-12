@@ -1,8 +1,10 @@
 'use client';
 
-import { Navbar } from "@/app/components/Navbar";
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion }                   from "framer-motion";
+
+import { Navbar }                                    from "@/app/components/Navbar";
+import { Footer }                                    from "@/app/components/Footer";
 
 const Privacy = () => {
   const [open, setOpen] = useState(solutions[0].id);
@@ -41,6 +43,8 @@ const Privacy = () => {
           />
         </AnimatePresence>
       </div>
+
+      <Footer />
     </section>
   );
 };

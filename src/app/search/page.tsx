@@ -1,7 +1,9 @@
 'use client';
 
 import React, {SetStateAction, useEffect, useState} from 'react';
-import { Navbar }                                   from "../components/Navbar";
+
+import { Navbar }                                   from "@/app/components/Navbar";
+import { Footer }                                   from "@/app/components/Footer";
 
 const FLAVOR_KEY_WORDS = [
     'effortlessly',
@@ -188,6 +190,8 @@ export default function Home() {
 
     return (
         <div>
+            <title>NitrousSL | OSINT</title>
+
             <Navbar />
             {/* background and layout */}
             <div className="absolute top-0 z-[-2] h-screen w-screen bg-[#000000] bg-[radial-gradient(#ffffff33_1px,black_1px)] bg-[size:20px_20px]"></div>
@@ -246,9 +250,10 @@ export default function Home() {
                     ))}
 
                 </div>
-
-
             </div>
+
+            <Footer />
+
         </div>
     )
 }
