@@ -5,7 +5,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'nitrous',
+  title: 'NitrousSL™ Privacy Suite',
   description: 'open source osint tool with an open api written for research purposes',
 }
 
