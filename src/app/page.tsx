@@ -2,13 +2,15 @@
 
 import React from "react";
 
-import { Footer } from "@/app/components/Footer";
-import { Navbar } from "@/app/components/Navbar";
+import { Footer  } from "@/app/components/Footer";
+import { Navbar  } from "@/app/components/Navbar";
+import { NavLogo } from "@/app/components/NavLogo";
 
 const Landing = () => {
     return (
         <div>
             <div className="absolute top-0 z-[-2] h-screen w-screen bg-[#000000] bg-[radial-gradient(#ffffff33_1px,black_1px)] bg-[size:20px_20px]"></div>
+
 
             <Navbar />
 
@@ -17,6 +19,8 @@ const Landing = () => {
                     NitrousSL™ Privacy Suite Coming Soon
                 </h2>
             </div>
+
+
 
             <Footer />
 

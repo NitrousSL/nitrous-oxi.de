@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: 'NitrousSL™ Privacy Suite',
   description: 'open source osint tool with an open api written for research purposes',
 }
+{/*TODO: change meta description*/}
 
 export default function RootLayout({
   children,
