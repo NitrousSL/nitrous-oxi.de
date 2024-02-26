@@ -15,7 +15,7 @@ export const Footer = () => {
 
   return (
     <footer className="footer absolute bottom-0.5 w-full text-center">
-        <div className="flex justify-center gap-2">
+        <div className="mb-3 text-md text-indigo-500 text-center font-bold flex justify-center gap-2">
             <Github/> <p>&copy; NitrousSL {year}</p>
         </div>
     </footer>
