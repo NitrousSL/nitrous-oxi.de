@@ -2,7 +2,7 @@
 
 import React, {SetStateAction, useEffect, useState} from 'react';
 
-import { Navbar }                                   from "@/app/components/Navbar";
+import { Navbar }                                   from "@/app/components/Navbar/Navbar";
 import { Footer }                                   from "@/app/components/Footer";
 
 const FLAVOR_KEY_WORDS = [
