@@ -1,0 +1,21 @@
+import {BackgroundBeams} from "@/app/components/ui/beams";
+import React from "react";
+
+const Landing = () => {
+    return (
+        <section>
+            <div className="max-w-2xl mx-auto p-4">
+                <h1 className="relative z-10 text-lg md:text-7xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-indigo-600  text-center font-sans font-bold">
+                    nitrous
+                </h1>
+                <p></p>
+                <p className="text-neutral-500 max-w-lg mx-auto my-2 text-sm text-center relative z-10">
+                    security suite featuring a flagship open source osint tool with an open api written for research
+                    purposes
+                </p>
+            </div>
+            <BackgroundBeams/>
+    </section>
+); }
+
+export default Landing;

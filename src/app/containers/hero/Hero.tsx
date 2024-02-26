@@ -1,4 +1,4 @@
-export default function Hero() {
+const Hero = () => {
     return (
         <div className={"w-full h-screen py-12 md:py-24 lg:py-32 xl:py-48 bg-[#17181C]"}>
             <div className={"px-4 md:px-6"}>
@@ -20,3 +20,5 @@ export default function Hero() {
         </div>
     )
 }
+
+export default Hero;
