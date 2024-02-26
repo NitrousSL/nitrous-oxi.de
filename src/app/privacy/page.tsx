@@ -3,7 +3,6 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { AnimatePresence, motion }                   from "framer-motion";
 
-import { Navbar }                                    from "@/app/components/Navbar/Navbar";
 import { Footer }                                    from "@/app/components/Footer";
 
 const Privacy = () => {
@@ -11,7 +10,6 @@ const Privacy = () => {
   const imgSrc = solutions.find((s) => s.id === open)?.imgSrc;
   return (
     <section className=" py-48">
-    <Navbar />
             
     {/* background and layout */}
 

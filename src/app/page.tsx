@@ -3,17 +3,16 @@
 import React from "react";
 
 import { Footer } from "@/app/components/Footer";
-import { Navbar  } from "@/app/components/Navbar";
 
 import Landing from "@/app/containers/landing/Landing";
+
+import Features from "./components/Features/Features";
 
 const Home = () => {
     return (
         <div>
-        <div className="h-screen w-full rounded-md bg-neutral-950 relative flex flex-col items-center justify-center antialiased">
-            <Navbar />
-            <Landing />
-        </div>
+        <Landing />
+        <Features />
         <Footer />
       </div>
     );
