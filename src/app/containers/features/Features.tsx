@@ -1,5 +1,5 @@
 import React from "react";
-import { EvervaultCard, Icon } from "@/app/components/ui/cards";
+import { EvervaultCard, Icon } from "@components/ui/cards";
  
 const Features = () => {
   return (

@@ -1,16 +1,15 @@
 'use client';
 
-import React from "react";
+import React      from "react";
 
 import { Footer } from "@/app/components/Footer";
 
-import Landing from "@/app/containers/landing/Landing";
-
-import Features from "./components/Features/Features";
+import Landing    from "@/app/containers/landing/Landing";
+import Features   from "@/app/containers/features/Features";
 
 const Home = () => {
     return (
-        <div>
+      <div>
         <Landing />
         <Features />
         <Footer />
