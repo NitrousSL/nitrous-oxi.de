@@ -6,13 +6,13 @@ import { Footer } from "@/app/components/Footer";
 
 import Landing    from "@/app/containers/landing/Landing";
 import Features   from "@/app/containers/features/Features";
+import { Navbar } from "./components/Navbar";
 
 const Home = () => {
     return (
       <div>
         <Landing />
         <Features />
-        <Footer />
       </div>
     );
 };
