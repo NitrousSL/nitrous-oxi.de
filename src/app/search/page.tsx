@@ -62,7 +62,7 @@ const BubbleText = () => {
 
     return (
         <h2 className="hover-text text-center text-5xl font-thin text-[#331E84]">
-            <Text>nitrous</Text>
+            <Text>Nitrous™</Text>
         </h2>
     );
 };
@@ -111,7 +111,7 @@ const getButtonCategories = async () => {
 const getFlavorTexts = async () => {
     let flavors: string[] = [];
 
-    const res = await fetch('https://raw.githubusercontent.com/NitrousOSINT/assets/main/txt/flavors.txt');
+    const res = await fetch('https://raw.githubusercontent.com/NitrousSL/assets/main/txt/flavors.txt');
     const data = await res.text();
 
     // split by new line
@@ -190,8 +190,6 @@ export default function Home() {
 
     return (
         <div>
-            <title>NitrousSL | OSINT</title>
-
             <Navbar />
             {/* background and layout */}
             <div className="absolute top-0 z-[-2] h-screen w-screen bg-[#000000] bg-[radial-gradient(#ffffff33_1px,black_1px)] bg-[size:20px_20px]"></div>
@@ -203,7 +201,7 @@ export default function Home() {
                     {/** TODO: slot machine spiny animation to cycle through flavorTexts array */}
                     {flavorTexts[0].split(' ').map((word, index) => {
                         if (FLAVOR_KEY_WORDS.includes(word.toLowerCase())) {
-                            return <span key={index} className="font-bold bg-grad">{word} </span>
+                            return <span key={index} className="font-bold bg-grad text-indigo-500">{word} </span>
                         } else {
                             return <span key={index}>{word} </span>
                         }})
