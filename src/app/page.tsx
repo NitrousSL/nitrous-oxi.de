@@ -2,11 +2,10 @@
 
 import React      from "react";
 
-import { Footer } from "@/app/components/Footer";
+import Landing    from "@containers/landing/Landing";
 
-import Landing    from "@/app/containers/landing/Landing";
-import Features   from "@/app/containers/features/Features";
-import { Navbar } from "./components/Navbar";
+import { Navbar } from "@components/Navbar";
+import { Footer } from "@components/Footer";
 
 const Home = () => {
     return (

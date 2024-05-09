@@ -1,5 +1,6 @@
-import {BackgroundBeams} from "@/app/components/ui/beams";
-import React from "react";
+import React               from "react";
+
+import { BackgroundBeams } from "@components/ui/beams";
 
 const Landing = () => {
     return (
@@ -15,11 +16,10 @@ const Landing = () => {
                 </p>
             </div>
 
-                {/* two buttons side by side */}
-                <div className="flex gap-4 mt-4">
-                    <a href="/search" className="bg-indigo-600 text-neutral-950 py-2 px-4 rounded-lg font-bold">Get Started</a>
-                    <a href="/docs" className="bg-indigo-600 text-neutral-950 py-2 px-4 rounded-lg font-bold">Docs</a>
-                </div>
+            <div className="flex gap-4 mt-4">
+                <a href="/search" className="bg-indigo-600 text-neutral-950 py-2 px-4 rounded-lg font-bold">Get Started</a>
+                <a href="/docs" className="bg-indigo-600 text-neutral-950 py-2 px-4 rounded-lg font-bold">Docs</a>
+            </div>
 
             <BackgroundBeams/>
             </div>

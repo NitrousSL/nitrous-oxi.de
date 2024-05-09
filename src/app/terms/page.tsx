@@ -2,8 +2,8 @@
 
 import React, { ReactNode, useState } from "react";
 
-import { Footer }                     from "@/app/components/Footer";
-import {Navbar} from "@components/Navbar";
+import { Navbar }                     from "@components/Navbar";
+import { Footer }                     from "@components/Footer";
 
 const Terms = () => {
   return (
@@ -11,7 +11,7 @@ const Terms = () => {
 
     {/* background and layout */}
     
-    <div className="absolute top-0 z-[-2] h-screen w-screen bg-[#000000] bg-[radial-gradient(#ffffff33_1px,black_1px)] bg-[size:20px_20px]"></div>
+    <div className="absolute top-0 z-[-2] h-screen w-screen bg-[#000000] bg-[radial-gradient(#ffffff33_1px,black_1px)] bg-[size:20px_20px]" />
 
       <div className="grid h-screen place-content-center">
         <span className="text-5xl font-black text-purple-300">service is provided as-is</span>

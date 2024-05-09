@@ -1,14 +1,14 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
+
+import type { Metadata } from 'next'
+import      { Inter    } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'NitrousSL™ Privacy Suite',
-  description: 'open source osint tool with an open api written for research purposes',
+  title: 'Nitrous™',
+  description: 'flagship open source osint tool with an open api written for research purposes',
 }
-{/*TODO: change meta description*/}
 
 export default function RootLayout({
   children,
