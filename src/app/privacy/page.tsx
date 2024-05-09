@@ -4,6 +4,7 @@ import React, { Dispatch, SetStateAction, useState } from "react";
 import { AnimatePresence, motion }                   from "framer-motion";
 
 import { Footer }                                    from "@/app/components/Footer";
+import {Navbar} from "@components/Navbar";
 
 const Privacy = () => {
   const [open, setOpen] = useState(solutions[0].id);
@@ -42,6 +43,7 @@ const Privacy = () => {
         </AnimatePresence>
       </div>
 
+      <Navbar />
       <Footer />
     </section>
   );

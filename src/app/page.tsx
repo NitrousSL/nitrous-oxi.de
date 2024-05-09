@@ -12,7 +12,8 @@ const Home = () => {
     return (
       <div>
         <Landing />
-        <Features />
+        <Navbar />
+        <Footer />
       </div>
     );
 };

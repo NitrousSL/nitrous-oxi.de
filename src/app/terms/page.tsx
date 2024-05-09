@@ -3,6 +3,7 @@
 import React, { ReactNode, useState } from "react";
 
 import { Footer }                     from "@/app/components/Footer";
+import {Navbar} from "@components/Navbar";
 
 const Terms = () => {
   return (
@@ -28,6 +29,7 @@ const Terms = () => {
         <span className="text-2xl font-black text-white">ii. either may be updated at any time without notice</span>
       </div>
 
+      <Navbar />
       <Footer />
 
     </MouseMoveLineDrawing>
