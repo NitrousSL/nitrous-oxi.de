@@ -6,8 +6,8 @@ import      { Inter    } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Nitrous™',
-  description: 'flagship open source osint tool with an open api written for research purposes',
+  title: 'nitrous-oxi.de',
+  description: 'open source OSINT tool with an exposed RESTful API and web search panel written for research purposes',
 }
 
 export default function RootLayout({
