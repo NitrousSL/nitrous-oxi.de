@@ -19,7 +19,7 @@ const Privacy = () => {
 
       <div className="w-full max-w-5xl mx-auto grid gap-8 grid-cols-1 lg:grid-cols-[1fr_350px]">
         <div>
-          <h3 className="text-4xl font-bold mb-8">privacy</h3>
+          <h3 className="text-4xl font-bold mb-8 text-purple-300">privacy</h3>
           <div className="flex flex-col gap-4">
             {solutions.map((q) => {
               return (
