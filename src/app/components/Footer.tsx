@@ -16,7 +16,7 @@ export const Footer = () => {
   return (
     <footer className="footer absolute bottom-0.5 w-full text-center">
         <div className="mb-3 text-md text-indigo-500 text-center font-bold flex justify-center gap-2">
-            <Github/> <p>&copy; NitrousSL {year}</p>
+            <Github/> <p>&copy; <a href={'https://haruhime.holdings'}>Haruhime Holdings</a> {year}</p>
         </div>
     </footer>
   );

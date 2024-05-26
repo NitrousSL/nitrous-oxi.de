@@ -138,8 +138,8 @@ const queryAPI = async (query: string, category: string) => {
     return await res.json();
 }
 
-// Home Component
-export default function Home() {
+// Main Search Component
+export default function Search() {
 
     const [flavorTexts, setFlavorTexts]           = useState<string[]>(['']);
 
@@ -171,7 +171,17 @@ export default function Home() {
                 if (obj.data.status === 200) { data.push({name: obj.name, data: obj.data}) }
             });
 
-            setResults(data);
+            const timestamp = new Date().toISOString().replace(/:/g, '-');
+            const blob      = new Blob([JSON.stringify(data)], { type: 'application/json' });
+            const url       = URL.createObjectURL(blob);
+            const a         = document.createElement('a');
+
+            a.download      = `${query}-${timestamp}.json`;
+            a.href          = url;
+
+            a.click(); a.remove();
+
+           setResults(data);
         }
 
         setLoading(false);
@@ -220,34 +230,13 @@ export default function Home() {
                     ))}
                 </div>
 
-                {/* results (gets back an object with keys) ex: [{name: 'module', data: { status: 200, data: {x: y, z:, a}}}, {name: 'module2', data: {...}}] */}
-                <div className="flex flex-col gap-2">
+                {/* results are downloaded once set */}
+                {loading && <p className="text-white text-center">loading...</p>}
+                {results.length > 0 && <div className="flex flex-col gap-4">
 
-                    {/* map the initial array of results (each module) */}
-                    {results.map((result, index) => (
-                        <div key={index} className="flex flex-col gap-2">
-
-                            {/* module name */}
-                            <h3 className="text-white text-xl">{result.name}</h3>
-                            <div className="flex flex-col gap-1">
-
-                                {/* map the data object of each modules result */}
-                                {Object.entries(result.data).map((entry, index) => (
-                                    <div key={index} className="flex flex-col gap-1">
-
-                                        {/* this is "status" and "data" texts */}
-                                        <h4 className="text-white text-lg">{entry[0]}</h4>
+                </div>}
 
 
-                                    </div>
-                                ))}
-
-                            </div>
-
-                        </div>
-                    ))}
-
-                </div>
             </div>
 
             <Footer />
